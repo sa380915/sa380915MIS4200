@@ -17,6 +17,9 @@ namespace sa380915MIS4200.DAL
 
         public DbSet<Orders> Orders { get; set; }
         public DbSet<customer> customer { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        //public System.Data.Entity.DbSet<sa380915MIS4200.Models.Product> Product { get; set; }
     }
 }
