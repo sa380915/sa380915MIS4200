@@ -8,7 +8,7 @@ namespace sa380915MIS4200.Models
     public class Grade
     {
         public int gradeID { get; set; }
-        public string grade { get; set; }
+        public string courseGrade { get; set; }
         
         public int courseID { get; set; }
         public virtual Course Course { get; set; }
