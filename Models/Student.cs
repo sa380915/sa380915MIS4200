@@ -15,7 +15,7 @@ namespace sa380915MIS4200.Models
         public DateTime studentSince { get; set; }
 
         
-        public ICollection<Course> Course { get; set; }
+        public ICollection<Grade> Grades { get; set; }
         public string fullName
         {
             get

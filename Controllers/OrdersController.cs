@@ -40,7 +40,7 @@ namespace sa380915MIS4200.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "fullName");
+            ViewBag.customerID = new SelectList(db.Customers, "customerID", "fullName");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace sa380915MIS4200.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "customerFirstName", orders.customerID);
+            ViewBag.customerID = new SelectList(db.Customers, "customerID", "customerFirstName", orders.customerID);
             return View(orders);
         }
 
@@ -74,7 +74,7 @@ namespace sa380915MIS4200.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "customerFirstName", orders.customerID);
+            ViewBag.customerID = new SelectList(db.Customers, "customerID", "customerFirstName", orders.customerID);
             return View(orders);
         }
 
@@ -91,7 +91,7 @@ namespace sa380915MIS4200.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "customerFirstName", orders.customerID);
+            ViewBag.customerID = new SelectList(db.Customers, "customerID", "customerFirstName", orders.customerID);
             return View(orders);
         }
 

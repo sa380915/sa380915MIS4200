@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<sa380915MIS4200.Models.Course>
 
 @{
-    ViewBag.Title = "Course Index";
+    ViewBag.Title = "Index";
 }
 
-<h2>Course Index</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Student.studentFirstName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.description)
         </th>
@@ -25,9 +22,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.studentFirstName)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.description)
         </td>
