@@ -11,112 +11,107 @@ using sa380915MIS4200.Models;
 
 namespace sa380915MIS4200.Controllers
 {
-    public class OrdersController : Controller
+    public class StudentsController : Controller
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Orders
+        // GET: Students
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.customer);
-            return View(orders.ToList());
+            return View(db.Students.ToList());
         }
 
-        // GET: Orders/Details/5
+        // GET: Students/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Orders orders = db.Orders.Find(id);
-            if (orders == null)
+            Student student = db.Students.Find(id);
+            if (student == null)
             {
                 return HttpNotFound();
             }
-            return View(orders);
+            return View(student);
         }
 
-        // GET: Orders/Create
+        // GET: Students/Create
         public ActionResult Create()
         {
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "fullName");
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Students/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "orderNumber,description,orderDate,customerID")] Orders orders)
+        public ActionResult Create([Bind(Include = "studentID,studentFirstName,studentLastName,email,phone,studentSince")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(orders);
+                db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "customerFirstName", orders.customerID);
-            return View(orders);
+            return View(student);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Students/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Orders orders = db.Orders.Find(id);
-            if (orders == null)
+            Student student = db.Students.Find(id);
+            if (student == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "customerFirstName", orders.customerID);
-            return View(orders);
+            return View(student);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Students/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "orderNumber,description,orderDate,customerID")] Orders orders)
+        public ActionResult Edit([Bind(Include = "studentID,studentFirstName,studentLastName,email,phone,studentSince")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(orders).State = EntityState.Modified;
+                db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.customerID = new SelectList(db.Customer, "customerID", "customerFirstName", orders.customerID);
-            return View(orders);
+            return View(student);
         }
 
-        // GET: Orders/Delete/5
+        // GET: Students/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Orders orders = db.Orders.Find(id);
-            if (orders == null)
+            Student student = db.Students.Find(id);
+            if (student == null)
             {
                 return HttpNotFound();
             }
-            return View(orders);
+            return View(student);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Orders orders = db.Orders.Find(id);
-            db.Orders.Remove(orders);
+            Student student = db.Students.Find(id);
+            db.Students.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

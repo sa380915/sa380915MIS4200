@@ -18,7 +18,7 @@ namespace sa380915MIS4200.Controllers
         // GET: customers
         public ActionResult Index()
         {
-            return View(db.customer.ToList());
+            return View(db.Customer.ToList());
         }
 
         // GET: customers/Details/5
@@ -28,7 +28,7 @@ namespace sa380915MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            customer customer = db.customer.Find(id);
+            customer customer = db.Customer.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace sa380915MIS4200.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.customer.Add(customer);
+                db.Customer.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace sa380915MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            customer customer = db.customer.Find(id);
+            customer customer = db.Customer.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace sa380915MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            customer customer = db.customer.Find(id);
+            customer customer = db.Customer.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace sa380915MIS4200.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            customer customer = db.customer.Find(id);
-            db.customer.Remove(customer);
+            customer customer = db.Customer.Find(id);
+            db.Customer.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
