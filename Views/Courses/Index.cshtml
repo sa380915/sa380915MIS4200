@@ -4,12 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Courses Offered</h2>
+<h2>Courses Offered
+    <span class="glyphicon glyphicon-education"></span>
+    </h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.description)
@@ -30,7 +32,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.courseID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.courseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.courseID })
+            <span class="glyphicon glyphicon-eye-open"></span>|
             @Html.ActionLink("Delete", "Delete", new { id=item.courseID })
         </td>
     </tr>

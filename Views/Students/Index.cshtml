@@ -4,12 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>List of Students</h2>
+    <h2>
+        List of Students
+        <span class="glyphicon glyphicon-user"></span>
+    </h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.studentFirstName)
@@ -47,9 +50,11 @@
             @Html.DisplayFor(modelItem => item.studentSince)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.studentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.studentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.studentID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.studentID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.studentID })
+            <span class="glyphicon glyphicon-eye-open"></span>|
+            @Html.ActionLink("Delete", "Delete", new { id = item.studentID })
+            
         </td>
     </tr>
 }
