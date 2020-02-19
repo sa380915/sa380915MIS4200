@@ -11,8 +11,11 @@ namespace sa380915MIS4200.Models
         public System.Guid GID { get; set; }
         public int gradeID { get; set; }
         [Display(Name = "Course Grade")]
+        [Required(ErrorMessage ="Course grade required")]
+        [StringLength(20)]
         public string courseGrade { get; set; }
         [Display(Name = "Course")]
+        [Required]
         public int courseID { get; set; }
         public virtual Course Course { get; set; }
         // the next two properties link the orderDetail to the Product
